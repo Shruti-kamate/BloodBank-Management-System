@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: reactjs-pod
+  labels:
+    app: reactjs-app
+spec:
+  containers:
+  - name: reactjs-container
+    image: node:14 # Using a Node.js base image
+    ports:
+    - containerPort: 3000
+    volumeMounts:
+    - mountPath: /usr/src/app
+      name: reactjs-source
+  volumes:
+  - name: reactjs-source
+    hostPath:
+      path: /path/to/your/react/project
